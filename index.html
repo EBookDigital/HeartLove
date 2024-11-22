@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart of Love</title>
+  <style>
+    body {
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="loveCanvas" width="800" height="600"></canvas>
+  <script>
+    const canvas = document.getElementById('loveCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Function to draw a heart
+    function drawHeart(x, y, size) {
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.bezierCurveTo(x - size / 2, y - size / 2, x - size, y + size / 3, x, y + size);
+      ctx.bezierCurveTo(x + size, y + size / 3, x + size / 2, y - size / 2, x, y);
+      ctx.fillStyle = 'red';
+      ctx.fill();
+    }
+
+    // Function to display messages
+    function displayMessage() {
+      ctx.font = '24px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = 'white';
+      ctx.fillText('Can you be mine?', canvas.width / 2, canvas.height / 2 + 50);
+      ctx.font = '18px Arial';
+      ctx.fillText('I love you <3', canvas.width / 2, canvas.height / 2 + 80);
+    }
+
+    // Main function
+    function main() {
+      drawHeart(canvas.width / 2, canvas.height / 2 - 50, 100);
+      displayMessage();
+    }
+
+    // Run the main function
+    main();
+  </script>
+</body>
+</html>
